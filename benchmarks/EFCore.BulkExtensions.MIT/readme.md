@@ -23,16 +23,16 @@ However, be careful — as shown in the charts below, it can sometimes perform w
 
 ## Bulk Insert
 
-![Benchmark EFCore vs EFCore.BulkExtensions.MIT – SQL Server - Bulk Insert](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/master/benchmarks/EFCore.BulkExtensions.MIT/benchmark-result/bulk-insert.png)
+![Benchmark EFCore vs EFCore.BulkExtensions.MIT – SQL Server - Bulk Insert](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/main/benchmarks/EFCore.BulkExtensions.MIT/benchmark-result/bulk-insert.png)
 
 ## Bulk Insert (with Graph)
 
-![Benchmark EFCore vs EFCore.BulkExtensions.MIT – SQL Server - Bulk Insert with Graph](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/master/benchmarks/EFCore.BulkExtensions.MIT/benchmark-result/bulk-insert-with-graph.png)
+![Benchmark EFCore vs EFCore.BulkExtensions.MIT – SQL Server - Bulk Insert with Graph](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/main/benchmarks/EFCore.BulkExtensions.MIT/benchmark-result/bulk-insert-with-graph.png)
 
 ## Bulk Update
 
-![Benchmark EFCore vs EFCore.BulkExtensions.MIT – SQL Server - Bulk Update](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/master/benchmarks/EFCore.BulkExtensions.MIT/benchmark-result/bulk-update.png)
+![Benchmark EFCore vs EFCore.BulkExtensions.MIT – SQL Server - Bulk Update](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/main/benchmarks/EFCore.BulkExtensions.MIT/benchmark-result/bulk-update.png)
 
 ## Bulk InsertOrUpdate
 
-![Benchmark EFCore vs EFCore.BulkExtensions.MIT – SQL Server - Bulk InsertOrUpdate](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/master/benchmarks/EFCore.BulkExtensions.MIT/benchmark-result/bulk-insert-or-update.png)
+![Benchmark EFCore vs EFCore.BulkExtensions.MIT – SQL Server - Bulk InsertOrUpdate](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/main/benchmarks/EFCore.BulkExtensions.MIT/benchmark-result/bulk-insert-or-update.png)
