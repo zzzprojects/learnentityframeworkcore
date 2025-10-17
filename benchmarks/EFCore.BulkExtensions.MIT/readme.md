@@ -14,12 +14,15 @@ As a result, the seeding process uses standard EF Core for the **“BulkInsertOr
 
 ## Performance Notes
 
-In some tests, we observed unexpected slowdowns.
-For example, in the **“Bulk Insert (with Graph)”** scenario, the bulk insert took **10x longer** than `SaveChanges()`.
-This issue also appeared occasionally when processing around **10,000 entities**.
+In most scenarios, the library is **much faster** than EF Core’s `SaveChanges()`.
+However, we identified two specific cases where performance dropped:
+
+* In the **“Bulk Insert (with Graph)”** scenario, the bulk operation became **10x slower** than `SaveChanges()` when processing a **very high number of entities** (around 10,000 or more).
+  This slowdown seems related to internal memory usage when handling complex graphs.
+* When working with a **small number of entities**, the library can also be **slightly slower** due to the fixed initialization overhead required by bulk operations.
 
 Overall, the library remains **very fast** and provides **significantly better performance** than EF Core for SQL Server in most cases.
-However, be careful — as shown in the charts below, it can sometimes perform worse depending on the operation and data structure.
+However, be careful — as shown in the result below, it can sometimes perform worse depending on the operation and data structure.
 
 ## Bulk Insert
 
