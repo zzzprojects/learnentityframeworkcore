@@ -19,12 +19,12 @@ The library offers **the best balance between performance and flexibility**, all
 
 ## Bulk Insert
 
-![Benchmark EFCore vs Entity Framework Extensions – SQL Server - Bulk Insert](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/master/benchmarks/EFCore.BulkExtensions.MIT/benchmark-result/bulk-insert.png)
+![Benchmark EFCore vs Entity Framework Extensions – SQL Server - Bulk Insert](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/main/benchmarks/Z.EntityFramework.Extensions.EFCore/benchmark-result/bulk-insert.png)
 
 ## Bulk Update
 
-![Benchmark EFCore vs Entity Framework Extensions – SQL Server - Bulk Update](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/master/benchmarks/EFCore.BulkExtensions.MIT/benchmark-result/bulk-update.png)
+![Benchmark EFCore vs Entity Framework Extensions – SQL Server - Bulk Update](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/main/benchmarks/Z.EntityFramework.Extensions.EFCore/benchmark-result/bulk-update.png)
 
 ## Bulk InsertOrUpdate
 
-![Benchmark EFCore vs Entity Framework Extensions – SQL Server - Bulk Merge](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/master/benchmarks/EFCore.BulkExtensions.MIT/benchmark-result/bulk-merge.png)
+![Benchmark EFCore vs Entity Framework Extensions – SQL Server - Bulk Merge](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/main/benchmarks/Z.EntityFramework.Extensions.EFCore/benchmark-result/bulk-merge.png)
