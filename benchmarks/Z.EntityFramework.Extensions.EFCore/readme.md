@@ -11,11 +11,14 @@ This ensures that the **trial version** works properly and that you’re testing
 
 ## Performance Notes
 
-In all scenarios, **Entity Framework Extensions** delivers **significantly faster performance** than EF Core’s native `SaveChanges()` — both **with** and **without graphs**.
+In nearly all scenarios, **Entity Framework Extensions** delivers **dramatically faster performance** than EF Core’s native `SaveChanges()` — both **with** and **without graphs**.
 
-The library offers **the best balance between performance and flexibility**, allowing you to handle large datasets efficiently without giving up control.
+The library offers **an exceptional balance between speed and flexibility**, allowing you to process thousands or even millions of entities efficiently while maintaining full control over your operations.
 
-👉 **Download the library here:** [https://entityframework-extensions.net/download](https://entityframework-extensions.net/download)
+Even for smaller data sets, performance is sometimes **just as fast or even slightly better** than `SaveChanges()`, meaning there’s virtually **no downside** to using the library in everyday operations.
+
+* 👉 **Download the library here:** [https://entityframework-extensions.net/download](https://entityframework-extensions.net/download)
+* 📈 **More benchmark results:** [https://github.com/zzzprojects/EntityFramework-Extensions](https://github.com/zzzprojects/EntityFramework-Extensions)
 
 ## Bulk Insert
 
