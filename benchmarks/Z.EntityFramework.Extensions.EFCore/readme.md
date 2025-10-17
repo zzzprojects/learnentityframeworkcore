@@ -25,6 +25,6 @@ The library offers **the best balance between performance and flexibility**, all
 
 ![Benchmark EFCore vs Entity Framework Extensions – SQL Server - Bulk Update](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/main/benchmarks/Z.EntityFramework.Extensions.EFCore/benchmark-result/bulk-update.png)
 
-## Bulk InsertOrUpdate
+## Bulk Merge
 
 ![Benchmark EFCore vs Entity Framework Extensions – SQL Server - Bulk Merge](https://raw.githubusercontent.com/zzzprojects/learnentityframeworkcore/main/benchmarks/Z.EntityFramework.Extensions.EFCore/benchmark-result/bulk-merge.png)
