@@ -41,7 +41,10 @@ namespace EFCore.Benchmarks
             var switcher = new BenchmarkSwitcher(new[]
             {
                 // ==== ChangeTracker ====
-                typeof(ChangeTracker_AddVsAddRange),
+                //typeof(ChangeTracker_AddVsAddRange),
+
+                // ==== Misc ====
+                typeof(ExecuteDeleteVsRemoveRange),
             });
 
             var config = ManualConfig
