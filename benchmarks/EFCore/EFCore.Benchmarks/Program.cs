@@ -44,7 +44,8 @@ namespace EFCore.Benchmarks
                 //typeof(ChangeTracker_AddVsAddRange),
 
                 // ==== Misc ====
-                typeof(ExecuteDeleteVsRemoveRange),
+                typeof(ExecuteDeleteVsSaveChanges),
+                //typeof(ExecuteUpdateVsSaveChanges),
             });
 
             var config = ManualConfig

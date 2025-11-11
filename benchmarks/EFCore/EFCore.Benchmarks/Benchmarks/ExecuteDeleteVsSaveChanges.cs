@@ -9,8 +9,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EFCore.Benchmarks
 {
-    [BenchmarkCategory("ExecuteDeleteVsRemoveRange")]
-    public class ExecuteDeleteVsRemoveRange
+    [BenchmarkCategory("ExecuteDeleteVsSaveChanges")]
+    public class ExecuteDeleteVsSaveChanges
     {
         [Params(1, 10, 100, 1_000, 10_000, 100_000)]
         public int EntityCount;
@@ -27,8 +27,14 @@ namespace EFCore.Benchmarks
             Context.BulkInsert(TestEntities);
         }
 
+        [IterationCleanup]
+        public void IterationCleanup()
+        {
+            Context.TestEntities.ExecuteDelete();
+        }
+
         [Benchmark]
-        public void RemoveRange()
+        public void SaveChanges()
         {
             Context.TestEntities.RemoveRange(Context.TestEntities);
             Context.SaveChanges();          
