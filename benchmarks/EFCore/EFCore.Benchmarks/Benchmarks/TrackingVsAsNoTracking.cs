@@ -9,11 +9,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EFCore.Benchmarks
 {
-    [BenchmarkCategory("ExecuteUpdateVsSaveChanges")]
-    public class ExecuteUpdateVsSaveChanges
+    [BenchmarkCategory("TrackingVsAsNoTracking")]
+    public class TrackingVsAsNoTracking
     {
         [Params(1, 10, 100, 1_000, 10_000, 100_000)]
-        // [Params(100_000)]
+        //[Params(1_000_000)]
         public int EntityCount;
 
         public TestDbContext? Context;
@@ -25,7 +25,7 @@ namespace EFCore.Benchmarks
             Context = new TestDbContext();
 
             TestEntities = BenchmarkHelper.GenerateTestEntities<TestEntity>(EntityCount);
-            Context.BulkInsert(TestEntities);
+            Context.BulkInsertOptimized(TestEntities);
         }
 
         [IterationCleanup]
@@ -35,39 +35,16 @@ namespace EFCore.Benchmarks
         }
 
         [Benchmark]
-        public void SaveChanges()
+        public void Tracking()
         {
-            var list = Context.TestEntities.ToList();
-            list.ForEach(x => { x.Col1 = 99; x.Col2 = 99; x.Col3 = 99; x.Col6 = "99"; x.Col7 = "99"; x.Col8 = "99"; });
-            Context.SaveChanges();          
+            var list = Context.TestEntities.ToList();    
         }
 
         [Benchmark]
-        public void ExecuteUpdate()
-        {
-            Context.TestEntities.ExecuteUpdate(x =>
-                 x.SetProperty(y => y.Col1, 99)
-                .SetProperty(y => y.Col2, 99)
-                .SetProperty(y => y.Col3, 99)
-                .SetProperty(y => y.Col6, "99")
-                .SetProperty(y => y.Col7, "99")
-                .SetProperty(y => y.Col8, "99"));
-        }
-
-        [Benchmark]
-        public void BulkUpdate()
+        public void AsNoTracking()
         {
             var list = Context.TestEntities.AsNoTracking().ToList();
-            list.ForEach(x => { x.Col1 = 99; x.Col2 = 99; x.Col3 = 99; x.Col6 = "99"; x.Col7 = "99"; x.Col8 = "99"; } );
-            Context.BulkUpdate(list);
         }
-
-        // Uncomment if you wish to see how much time it takes to materialize entities.
-        //[Benchmark]
-        //public void ToListTime()
-        //{
-        //    var list = Context.TestEntities.ToList();
-        //}
 
         public class TestDbContext : DbContext
         {

@@ -13,6 +13,7 @@ namespace EFCore.Benchmarks
     public class ExecuteDeleteVsSaveChanges
     {
         [Params(1, 10, 100, 1_000, 10_000, 100_000)]
+        //[Params(100_000)]
         public int EntityCount;
 
         public TestDbContext? Context;
@@ -37,7 +38,7 @@ namespace EFCore.Benchmarks
         public void SaveChanges()
         {
             Context.TestEntities.RemoveRange(Context.TestEntities);
-            Context.SaveChanges();          
+            Context.SaveChanges();
         }
 
         [Benchmark]
@@ -45,6 +46,19 @@ namespace EFCore.Benchmarks
         {
             Context.TestEntities.ExecuteDelete();
         }
+
+        [Benchmark]
+        public void BulkDelete()
+        {
+            Context.BulkDelete(Context.TestEntities.AsNoTracking());
+        }
+
+        // Uncomment if you wish to see how much time it takes to materialize entities.
+        //[Benchmark]
+        //public void ToListTime()
+        //{
+        //    var list = Context.TestEntities.ToList();
+        //}
 
         public class TestDbContext : DbContext
         {

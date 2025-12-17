@@ -43,9 +43,12 @@ namespace EFCore.Benchmarks
                 // ==== ChangeTracker ====
                 //typeof(ChangeTracker_AddVsAddRange),
 
-                // ==== Misc ====
+                // ====  ExecuteMethod ====
                 typeof(ExecuteDeleteVsSaveChanges),
-                //typeof(ExecuteUpdateVsSaveChanges),
+                //typeof(ExecuteUpdateVsSaveChanges)
+
+                // ==== Misc ====
+                //typeof(TrackingVsAsNoTracking)
             });
 
             var config = ManualConfig
