@@ -81,7 +81,7 @@ namespace EFCore.Benchmarks
             {
                 // ==== Bulk Insert ====
                 //typeof(BulkInsertBenchmark),
-                //typeof(BulkInsertWithGraphBenchmark),
+                typeof(BulkInsertWithGraphBenchmark),
 
                 // ==== Bulk InsertOrUpdate ====
                 //typeof(BulkInsertOrUpdateBenchmark),
@@ -93,7 +93,7 @@ namespace EFCore.Benchmarks
                 //typeof(BulkUpdateBenchmark),
 
                 // Doesn't work
-                typeof(BulkUpdateWithGraphBenchmark),
+                //typeof(BulkUpdateWithGraphBenchmark),
             });
 
             var config = ManualConfig
@@ -108,7 +108,7 @@ namespace EFCore.Benchmarks
                 .WithOrderer(new DefaultOrderer(SummaryOrderPolicy.Default, MethodOrderPolicy.Declared))
                 .HideColumns("ProviderKind", "Error", "StdDev", "Median", "Gen0", "Gen1", "Gen2")
                 .AddJob(Job.Default
-                    .WithIterationCount(1)
+                    .WithIterationCount(25)
                     .WithWarmupCount(1)
                     .WithId("BulkExtensionsMIT")
                 );
