@@ -16,6 +16,9 @@ namespace EFCore.Benchmarks
 
             // Seed the table with entities that will be updated during the benchmark
             Context.BulkInsert(TestEntities);
+
+            // Change at least one column value
+            TestEntities.ForEach(x => x.Col1 += 1);
         }
 
         [IterationCleanup]

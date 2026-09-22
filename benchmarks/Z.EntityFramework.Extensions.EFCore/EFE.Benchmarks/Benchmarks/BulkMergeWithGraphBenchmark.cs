@@ -16,6 +16,10 @@ namespace EFCore.Benchmarks
             TestEntities = BenchmarkHelper.GenerateTestEntitiesWithGraph(EntityCount / 2, IncludeGraphChildCount);
             Context.BulkInsert(TestEntities, options => { options.IncludeGraph = true; });
 
+            // Change at least one column value
+            TestEntities.ForEach(x => x.Col1 += 1);
+            TestEntities.SelectMany(x => x.ChildEntities).ToList().ForEach(x => x.Col1 += 1);
+
             // Second half: Added to the list so they will be inserted during BulkMerge
             TestEntities.AddRange(BenchmarkHelper.GenerateTestEntitiesWithGraph(EntityCount / 2, IncludeGraphChildCount));
         }

@@ -15,16 +15,16 @@ namespace EFCore.Benchmarks
 
             // First half: Inserted now so they will be updated during BulkMerge
             TestEntities = BenchmarkHelper.GenerateTestEntities(EntityCount / 2);
-			var Context2 = new TestDbContext(ProviderKind);
-			Context2.TestEntities.AddRange(TestEntities);
-			Context2.SaveChanges();
-			//Context.BulkInsert(TestEntities, options =>
-			//{
-			//    options.SetOutputIdentity = true;
-			//});
+            Context.BulkInsert(TestEntities, options =>
+            {
+                options.SetOutputIdentity = true;
+            });
 
-			// Second half: Added to the list so they will be inserted during BulkMerge
-			TestEntities.AddRange(BenchmarkHelper.GenerateTestEntities(EntityCount / 2));
+            // Change at least one column value
+            TestEntities.ForEach(x => x.Col1 += 1);
+
+            // Second half: Added to the list so they will be inserted during BulkMerge
+            TestEntities.AddRange(BenchmarkHelper.GenerateTestEntities(EntityCount / 2));
         }
 
         [IterationCleanup]

@@ -54,11 +54,12 @@ namespace EFCore.Benchmarks
         //   - Multiple counts: [Params(10, 1_000, 10_000)]
         // ─────────────────────────────────────────────────────────────────────────
         [Params(
-           10
+        //   10
         //, 100
-        , 1_000
+        //, 
+            1_000
         //,10_000
-         ,100_000
+        // ,100_000
         //, 1_000_000
         )]
         public int EntityCount;
@@ -80,13 +81,19 @@ namespace EFCore.Benchmarks
             {
                 // ==== Bulk Insert ====
                 //typeof(BulkInsertBenchmark),
-                typeof(BulkInsertWithGraphBenchmark),
+                //typeof(BulkInsertWithGraphBenchmark),
 
                 // ==== Bulk InsertOrUpdate ====
                 //typeof(BulkInsertOrUpdateBenchmark),
 
+                // Doesn't work
+                //typeof(BulkInsertOrUpdateWithGraphBenchmark),
+
                 // ==== Bulk Update ====
                 //typeof(BulkUpdateBenchmark),
+
+                // Doesn't work
+                typeof(BulkUpdateWithGraphBenchmark),
             });
 
             var config = ManualConfig
@@ -101,7 +108,7 @@ namespace EFCore.Benchmarks
                 .WithOrderer(new DefaultOrderer(SummaryOrderPolicy.Default, MethodOrderPolicy.Declared))
                 .HideColumns("ProviderKind", "Error", "StdDev", "Median", "Gen0", "Gen1", "Gen2")
                 .AddJob(Job.Default
-                    .WithIterationCount(25)
+                    .WithIterationCount(1)
                     .WithWarmupCount(1)
                     .WithId("BulkExtensionsMIT")
                 );

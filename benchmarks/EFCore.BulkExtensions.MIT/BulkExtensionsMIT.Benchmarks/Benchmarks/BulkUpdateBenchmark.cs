@@ -1,7 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using EFCore.BulkExtensions;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace EFCore.Benchmarks
 {
@@ -16,14 +15,14 @@ namespace EFCore.Benchmarks
 
             TestEntities = BenchmarkHelper.GenerateTestEntities(EntityCount);
 
-			// Seed the table with entities that will be updated during the benchmark
-			var Context2 = new TestDbContext(ProviderKind);
-			Context2.TestEntities.AddRange(TestEntities);
-			Context2.SaveChanges();
-            //Context.BulkInsert(TestEntities, options =>
-            //{
-            //    options.SetOutputIdentity = true;
-            //});
+            // Seed the table with entities that will be updated during the benchmark
+            Context.BulkInsert(TestEntities, options =>
+            {
+                options.SetOutputIdentity = true;
+            });
+
+            // Change at least one column value
+            TestEntities.ForEach(x => x.Col1 += 1);
         }
 
         [IterationCleanup]

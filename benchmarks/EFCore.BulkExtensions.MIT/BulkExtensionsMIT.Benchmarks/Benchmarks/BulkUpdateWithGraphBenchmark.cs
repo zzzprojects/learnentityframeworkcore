@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using EFCore.BulkExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace EFCore.Benchmarks
@@ -15,7 +16,11 @@ namespace EFCore.Benchmarks
             TestEntities = BenchmarkHelper.GenerateTestEntitiesWithGraph(EntityCount, IncludeGraphChildCount);
 
             // Seed the table with entities that will be updated during the benchmark
-            Context.BulkInsert(TestEntities, options => { options.IncludeGraph = true; });
+            Context.BulkInsert(TestEntities, options =>
+            {
+                options.SetOutputIdentity = true;
+                options.IncludeGraph = true;
+            });
 
             // Change at least one column value
             TestEntities.ForEach(x => x.Col1 += 1);
